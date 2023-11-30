@@ -1,7 +1,6 @@
 import pandas as pd 
 import streamlit as st
 
-
 # Fonction pour créer une question avec des boutons radio
 def creer_question(titre, options, cle):
     st.subheader(titre)
@@ -33,5 +32,7 @@ with col2:
 
 # Bouton de prédiction (à placer à la dernière page)
 if st.button("Prédiction"):
+    np.array(reponses) 
+    
     # Implémentez ici la logique de prédiction en utilisant les réponses collectées
     st.write("Résultat de la prédiction")
