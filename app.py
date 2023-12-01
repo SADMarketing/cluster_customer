@@ -115,53 +115,6 @@ for i, question in enumerate(questions, start=1):
                                         cle=f"question_{i}")
 
 
-# Initialiser un dictionnaire pour les réponses
-data = {
-    'Sexe': sexe,
-    'Age': age,
-    'CSP': profession,
-    'CP': code_postal,
-    'Habitat': habitation,
-    'Nb voitures du foyer': voitures,
-    'Nb voitures hybrides ou électriques': voitures_hybrides_electriques,
-    'Revenus mensuels du foyer': revenus,
-    'Foyer': nombre_personnes,
-    'Enfants au foyer': enfants,
-    'Nb enfants foyer': nb_enfants if enfants == 'Oui' else 0,
-    # Ajoutez ici les réponses aux autres questions
-}
-
-# Vous devez définir la logique pour 'Age tranches' en fonction de l'âge
-
-# Ajoutez les âges des enfants s'il y en a
-for i in range(1, nb_enfants + 1 if enfants == 'Oui' else 1):
-    data[f'Age enfant {i}'] = ages_enfants.get(f'Enfant {i}', None)
-
-# Ajoutez les réponses aux questions dans le dictionnaire de données
-for i, question in enumerate(questions, start=1):
-    data[question] = reponses[question]
-
-# Maintenant, créons une liste des noms de colonnes pour le DataFrame
-colonne_noms = [
-    'Sexe', 'Age', 'CSP', 'CP', 'Age tranches', 'Habitat',
-    'Nb voitures du foyer', 'Nb voitures hybrides ou électriques',
-    'Revenus mensuels du foyer', 'Foyer',
-    'Enfants au foyer', 'Nb enfants foyer'
-]
-
-# Ajoutez les noms des colonnes pour les âges des enfants
-for i in range(1, nb_enfants + 1 if enfants == 'Oui' else 1):
-    colonne_noms.append(f'Age enfant {i}')
-
-# Ajoutez les noms des colonnes pour les questions
-colonne_noms.extend(questions)
-
-# Créer le DataFrame
-df = pd.DataFrame([data], columns=colonne_noms)
-
-# Afficher le DataFrame
-st.dataframe(df)
-
 # Page header
 st.header("Enquête sur les habitudes d'achat et informations personnelles")
 
@@ -180,7 +133,54 @@ with col2:
 
 # Bouton de prédiction (à placer à la dernière page)
 if st.button("Prédiction"):
-    np.array(reponses) 
+    
+# Initialiser un dictionnaire pour les réponses
+    data = {
+        'Sexe': sexe,
+        'Age': age,
+        'CSP': profession,
+        'CP': code_postal,
+        'Habitat': habitation,
+        'Nb voitures du foyer': voitures,
+        'Nb voitures hybrides ou électriques': voitures_hybrides_electriques,
+        'Revenus mensuels du foyer': revenus,
+        'Foyer': nombre_personnes,
+        'Enfants au foyer': enfants,
+        'Nb enfants foyer': nb_enfants if enfants == 'Oui' else 0,
+        # Ajoutez ici les réponses aux autres questions
+    }
+
+# Vous devez définir la logique pour 'Age tranches' en fonction de l'âge
+    
+    # Ajoutez les âges des enfants s'il y en a
+    for i in range(1, nb_enfants + 1 if enfants == 'Oui' else 1):
+        data[f'Age enfant {i}'] = ages_enfants.get(f'Enfant {i}', None)
+
+    # Ajoutez les réponses aux questions dans le dictionnaire de données
+    for i, question in enumerate(questions, start=1):
+        data[question] = reponses[question]
+
+# Maintenant, créons une liste des noms de colonnes pour le DataFrame
+    colonne_noms = [
+        'Sexe', 'Age', 'CSP', 'CP', 'Age tranches', 'Habitat',
+        'Nb voitures du foyer', 'Nb voitures hybrides ou électriques',
+        'Revenus mensuels du foyer', 'Foyer',
+        'Enfants au foyer', 'Nb enfants foyer'
+    ]
+
+    # Ajoutez les noms des colonnes pour les âges des enfants
+    for i in range(1, nb_enfants + 1 if enfants == 'Oui' else 1):
+        colonne_noms.append(f'Age enfant {i}')
+
+    # Ajoutez les noms des colonnes pour les questions
+    colonne_noms.extend(questions)
+    
+# Créer le DataFrame
+    df = pd.DataFrame([data], columns=colonne_noms)
+
+# Afficher le DataFrame
+    st.dataframe(df)
+
     
     # Implémentez ici la logique de prédiction en utilisant les réponses collectées
     st.write("Résultat de la prédiction")
