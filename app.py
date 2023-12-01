@@ -6,7 +6,7 @@ def creer_question(titre, options, cle):
     st.subheader(titre)
     return st.radio("", options, key=cle)
 
-with open(link_file_question) as file  : 
+#with open(link_file_question) as file  : 
     
 # Liste des questions
 questions = ["Je privilégie les soldes/ventes privées pour acheter des produits non alimentaires et ainsi faire de bonnes affaires",
