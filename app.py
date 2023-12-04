@@ -1,6 +1,6 @@
 import pandas as pd 
 import streamlit as st
-
+import inference
 # Fonction pour créer une question avec des boutons radio
 def creer_question(titre, options, cle):
     st.subheader(titre)
@@ -184,7 +184,9 @@ if st.button("Prédiction"):
     train.replace( { "Tout à fait d'accord" : 4, "Plutôt d'accord" : 3, "Plutôt pas d'accord" : 2 , "Pas du tout d'accord" :1 } , inplace = True )
     train.reset_index(drop = True , inplace = True)
 
-    train = preprocessing(train) 
+    train = preprocessing_cluster(train)
+
+    cluster_value = predict 
     
 
     
