@@ -194,6 +194,6 @@ if st.button("Prédiction"):
     
 # Afficher le DataFrame
     st.dataframe(train)
-    label_predict = 
+  
     # Implémentez ici la logique de prédiction en utilisant les réponses collectées
     st.write("Résultat de la prédiction  : {}".format(label_predict))
