@@ -153,8 +153,8 @@ if st.button("Prédiction"):
 # Vous devez définir la logique pour 'Age tranches' en fonction de l'âge
     
     # Ajoutez les âges des enfants s'il y en a
-    for i in range(1, nb_enfants + 1 if enfants == 'Oui' else 1):
-        data[f'Age enfant {i}'] = ages_enfants.get(f'Enfant {i}', None)
+   # for i in range(1, nb_enfants + 1 if enfants == 'Oui' else 1):
+   #     data[f'Age enfant {i}'] = ages_enfants.get(f'Enfant {i}', None)
 
     # Ajoutez les réponses aux questions dans le dictionnaire de données
     for i, question in enumerate(questions, start=1):
@@ -181,8 +181,8 @@ if st.button("Prédiction"):
     train = pd.read_parquet("df_with_label_cluster_tot_concatenate_row.parquet")
     st.dataframe(train)
     train = pd.concat([train , df] , axis = 1)
+    # explication 
     
-
 # Afficher le DataFrame
     st.dataframe(train)
 
