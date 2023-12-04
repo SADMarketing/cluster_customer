@@ -177,7 +177,6 @@ if st.button("Prédiction"):
     
 # Créer le DataFrame
     df = pd.DataFrame([data], columns=colonne_noms)
-    df = df.drop('Unnamed: 0' , axis = 1 )
     st.dataframe(df)
     train = pd.read_parquet("df_with_label_cluster_tot_concatenate_row.parquet")
     st.dataframe(train)
