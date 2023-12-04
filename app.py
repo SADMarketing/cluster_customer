@@ -182,6 +182,9 @@ if st.button("Prédiction"):
     st.dataframe(train)
     train = pd.concat([train , df] , axis = 0)
     train.replace( { "Tout à fait d'accord" : 4, "Plutôt d'accord" : 3, "Plutôt pas d'accord" : 2 , "Pas du tout d'accord" :1 } , inplace = True )
+    train.reset_index(drop = True , inplace = True)
+
+    
     # explication 
     
 # Afficher le DataFrame
@@ -189,4 +192,4 @@ if st.button("Prédiction"):
 
     
     # Implémentez ici la logique de prédiction en utilisant les réponses collectées
-    st.write("Résultat de la prédiction")
+    st.write("Résultat de la prédiction  : {}".format(10))
