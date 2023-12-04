@@ -184,12 +184,14 @@ if st.button("Prédiction"):
     train.replace( { "Tout à fait d'accord" : 4, "Plutôt d'accord" : 3, "Plutôt pas d'accord" : 2 , "Pas du tout d'accord" :1 } , inplace = True )
     train.reset_index(drop = True , inplace = True)
 
+    train = preprocessing(train) 
+    
+
     
     # explication 
     
 # Afficher le DataFrame
     st.dataframe(train)
-
-    
+    label_predict = 
     # Implémentez ici la logique de prédiction en utilisant les réponses collectées
-    st.write("Résultat de la prédiction  : {}".format(10))
+    st.write("Résultat de la prédiction  : {}".format(label_predict))
