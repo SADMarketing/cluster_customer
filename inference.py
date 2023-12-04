@@ -14,7 +14,7 @@ import pickle
 
 from scipy.spatial.distance import cdist
 
-def inference(responses : np.array):
+def inference_(responses : np.array):
 
   model = pickle.load()   # conditionnement choix de modèle question facultatif   // 
   pred = model.predict(responses) 
