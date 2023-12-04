@@ -1,6 +1,6 @@
 import pandas as pd 
 import streamlit as st
-import inference
+from inference import  preprocessing_cluster
 # Fonction pour créer une question avec des boutons radio
 def creer_question(titre, options, cle):
     st.subheader(titre)
