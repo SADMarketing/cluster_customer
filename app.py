@@ -177,10 +177,12 @@ if st.button("Prédiction"):
     
 # Créer le DataFrame
     df = pd.DataFrame([data], columns=colonne_noms)
+    df = df.drop('Unnamed: 0' , axis = 1 )
     st.dataframe(df)
     train = pd.read_parquet("df_with_label_cluster_tot_concatenate_row.parquet")
     st.dataframe(train)
-    train = pd.concat([train , df] , axis = 1)
+    train = pd.concat([train , df] , axis = 0)
+    train.replace( { "Tout à fait d'accord" : 4, "Plutôt d'accord" : 3, "Plutôt pas d'accord" : 2 , "Pas du tout d'accord" :1 } , inplace = True )
     # explication 
     
 # Afficher le DataFrame
