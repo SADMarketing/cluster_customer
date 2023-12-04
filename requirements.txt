@@ -2,4 +2,4 @@ pandas
 streamlit
 pickle
 matplotlib
-sklearn
+scikit-learn
