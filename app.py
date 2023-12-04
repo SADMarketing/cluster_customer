@@ -169,8 +169,8 @@ if st.button("Prédiction"):
     ]
 
     # Ajoutez les noms des colonnes pour les âges des enfants
-    for i in range(1, nb_enfants + 1 if enfants == 'Oui' else 1):
-        colonne_noms.append(f'Age enfant {i}')
+   # for i in range(1, nb_enfants + 1 if enfants == 'Oui' else 1):
+    #    colonne_noms.append(f'Age enfant {i}')
 
     # Ajoutez les noms des colonnes pour les questions
     colonne_noms.extend(questions)
