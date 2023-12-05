@@ -41,4 +41,42 @@ def preprocessing_cluster(df):
        'Foyer', 'Enfants au foyer', 'Nb enfants foyer']]).iloc[:,2:],train],axis = 1)
 
     return train____
+
+
+
+def attribute_cluster(df , label):
+
+    df["label"] = label
+
+  # Nouvelle ligne sans label
+   # Exemple de nouvelles caractéristiques
+
+  # Ajouter la nouvelle ligne au DataFrame pour la comparaison
+
+
+    df_with_new_row = df.copy()
+      # Séparer les caractéristiques et les labels
+    features = df_with_new_row.drop('label', axis=1, errors='ignore')
+    features = features.iloc[: , :-1]
+  # Calculer la similarité cosinus
+    similarity_matrix =cosine_similarity(features)
+
+  # Similarités de la nouvelle ligne avec toutes les autres
+    similarities = similarity_matrix[-1][:-1]  # Exclure la similarité avec elle-même
+
+  # Obtenir les indices des 10 lignes les plus similaires
+    top_10_similar_indices = np.argsort(-similarities)[:10]
+
+  # Fréquence des labels parmi les 10 lignes les plus similaires
+    top_10_labels = label.iloc[top_10_similar_indices]
+    top_10_freq = top_10_labels.value_counts() / len(top_10_labels)
+
+      # Fréquence des labels dans l'ensemble des données
+    overall_freq = label.value_counts() / len(label)
+
+      # Calculer le ratio
+    penalized_freq = top_10_freq / overall_freq 
+    penalized_freq = penalized_freq.sort_values(ascending = False).index[0]
+    
+    return penalized_freq
   
