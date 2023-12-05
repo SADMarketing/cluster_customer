@@ -179,6 +179,8 @@ if st.button("Prédiction"):
     df = pd.DataFrame([data], columns=colonne_noms)
     st.dataframe(df)
     train = pd.read_parquet("df_with_label_cluster_tot_concatenate_row.parquet")
+    label = train['label']
+    train.drop("label",axis =1,inplace=True)
     st.dataframe(train)
     train = pd.concat([train , df] , axis = 0)
     train.replace( { "Tout à fait d'accord" : 4, "Plutôt d'accord" : 3, "Plutôt pas d'accord" : 2 , "Pas du tout d'accord" :1 } , inplace = True )
@@ -186,7 +188,7 @@ if st.button("Prédiction"):
 
     train = preprocessing_cluster(train)
 
-    cluster_value = 
+    cluster_value = attribute_cluster(train , label)
     
 
     
