@@ -10,7 +10,11 @@ from sklearn.manifold import TSNE
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 import numpy as np
-import pickle
+
+import pandas as pd
+from sklearn.metrics.pairwise import cosine_similarity
+import numpy as np
+from sklearn.metrics import jaccard_score
 
 from scipy.spatial.distance import cdist
 
