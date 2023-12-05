@@ -9,6 +9,7 @@ from sklearn.metrics import jaccard_score
 def creer_question(titre, options, cle):
     st.subheader(titre)
     return st.radio("", options, key=cle)
+st.header("Enquête sur les habitudes d'achat et informations personnelles")
 
 #with open(link_file_question) as file  : 
 
@@ -120,7 +121,6 @@ for i, question in enumerate(questions, start=1):
 
 
 # Page header
-st.header("Enquête sur les habitudes d'achat et informations personnelles")
 
 
 # Boutons de navigation
@@ -181,26 +181,22 @@ if st.button("Prédiction"):
     
 # Créer le DataFrame
     df = pd.DataFrame([data], columns=colonne_noms)
-    st.dataframe(df)
+   # st.dataframe(df)
     train = pd.read_parquet("df_with_label_cluster_tot_concatenate_row.parquet")
     label = train['label']
     train.drop("label",axis =1,inplace=True)
-    st.dataframe(train)
+   # st.dataframe(train)
     train = pd.concat([train , df] , axis = 0)
     train.replace( { "Tout à fait d'accord" : 4, "Plutôt d'accord" : 3, "Plutôt pas d'accord" : 2 , "Pas du tout d'accord" :1 } , inplace = True )
     train.reset_index(drop = True , inplace = True)
-
+    
     train = preprocessing_cluster(train)
-
+    
     cluster_value = attribute_cluster(train , label)
     
 
-    
-    # explication 
     
 # Afficher le DataFrame
     st.dataframe(train)
-  
     # Implémentez ici la logique de prédiction en utilisant les réponses collectées
-    cluster_value = attribute_cluster(train , label)
     st.write("Résultat de la prédiction  : {}".format(cluster_value))
