@@ -1,6 +1,6 @@
 import pandas as pd 
 import streamlit as st
-from inference import  preprocessing_cluster
+from inference import  preprocessing_cluster 
 # Fonction pour créer une question avec des boutons radio
 def creer_question(titre, options, cle):
     st.subheader(titre)
@@ -186,7 +186,7 @@ if st.button("Prédiction"):
 
     train = preprocessing_cluster(train)
 
-    cluster_value = predict 
+    cluster_value = 
     
 
     
