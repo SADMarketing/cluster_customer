@@ -202,4 +202,5 @@ if st.button("Prédiction"):
     st.dataframe(train)
   
     # Implémentez ici la logique de prédiction en utilisant les réponses collectées
-    st.write("Résultat de la prédiction  : {}".format(label_predict))
+    cluster_value = attribute_cluster(train , label)
+    st.write("Résultat de la prédiction  : {}".format(cluster_value))
